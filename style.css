@@ -66,25 +66,68 @@ button:active {
 /* ---------- 屏2：翻页动画 ---------- */
 .book {
   perspective: 1200px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60vh;
 }
 
-.page {
+/* 书芯（翻页后露出的底层纸） */
+.book-cover {
+  position: absolute;
   width: 200px;
   height: 280px;
-  background: #e8e0d0;
+  background: linear-gradient(135deg, #d9d0c1 0%, #c8bda9 100%);
   border-radius: 2px;
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.28), 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* 翻页纸：双面（正面纸张 + 背面纸背），绕左缘 3D 翻转 */
+.page {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  transform-style: preserve-3d;
   transform-origin: left center;
   transform: rotateY(0deg);
   transition: transform 1.2s cubic-bezier(.4, 0, .2, 1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .page.flipping {
   transform: rotateY(-180deg);
+}
+
+.page-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 正面：纸页，竖排书名 */
+.page-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(105deg, #f8f3e7 0%, #efe7d5 55%, #e8ddc8 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.page-front span {
+  font-size: 1.1rem;
+  letter-spacing: 0.4em;
+  color: #b3a78f;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* 背面：翻开后露出的纸背 */
+.page-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(285deg, #f0e8d8 0%, #e5dbc4 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 /* ---------- 屏3：答案 ---------- */
