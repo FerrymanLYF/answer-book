@@ -1,0 +1,97 @@
+/* ============================================================
+ * Answer Book — 样式
+ * ============================================================ */
+
+/* ---------- 基础重置 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1a1a1a;
+  color: #e8e0d0;
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- 三屏切换 ---------- */
+.screen {
+  display: none;
+  text-align: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ---------- 屏1：静心 ---------- */
+.hint {
+  font-size: 1.2rem;
+  opacity: 0.6;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- 通用按钮 ---------- */
+button {
+  background: none;
+  border: 1px solid #e8e0d0;
+  color: #e8e0d0;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-family: inherit;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+button:active {
+  opacity: 0.5;
+}
+
+/* ---------- 屏2：翻页动画 ---------- */
+.book {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.page {
+  width: 200px;
+  height: 280px;
+  background: #e8e0d0;
+  border-radius: 2px;
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition: transform 1.2s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.page.flipping {
+  transform: rotateY(-180deg);
+}
+
+/* ---------- 屏3：答案 ---------- */
+.answer-text {
+  font-size: 2rem;
+  line-height: 1.6;
+  min-height: 4rem;
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+}

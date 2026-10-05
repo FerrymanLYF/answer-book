@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Answer Book</title>
+  <meta name="description" content="一本电子版《答案之书》。静心，默念问题，翻开，得到答案。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- 屏1：静心 -->
+    <section class="screen active" id="s-idle">
+      <p class="hint">静心，默念你的问题</p>
+      <button id="btn-ask">翻开</button>
+    </section>
+
+    <!-- 屏2：翻页动画 -->
+    <section class="screen" id="s-flip">
+      <div class="book">
+        <div class="page" id="page"></div>
+      </div>
+    </section>
+
+    <!-- 屏3：答案 -->
+    <section class="screen" id="s-answer">
+      <p class="answer-text" id="answer-text"></p>
+      <button id="btn-close">合上</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
