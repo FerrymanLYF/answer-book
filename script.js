@@ -128,8 +128,9 @@ btnAsk.addEventListener('click', () => {
   if (state.current !== 's-idle') return; // 防重复点击
 
   goTo('s-flip');
-  void page.offsetWidth; // 强制 reflow：先渲染"合拢的书"，transition 才有起点
-  page.classList.add('flipping');
+  page.classList.remove('flipping'); // 书页先回到"合上"状态（盖在左页上）
+  void page.offsetWidth;             // 渲染合上的书，transition 才有起点
+  page.classList.add('flipping');    // 翻开：右页绕书脊展开，仿真翻页
   playFlipSound();
 
   // 动画结束的最后一刻才取随机数
