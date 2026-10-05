@@ -133,16 +133,16 @@ button:active {
   background: linear-gradient(285deg, #f0e8d8 0%, #e5dbc4 100%);
 }
 
-/* 右页：绕书脊（左缘）翻转 —— 合上时盖在左页上，翻开时展开到右侧 */
+/* 右页：绕书脊（左缘）翻转 —— 初始打开在右侧，翻开时从右往左翻过去盖在左页上 */
 .page-right {
   z-index: 2;
   transform-origin: left center;
-  transform: rotateY(-180deg); /* 合上：盖在左页上，封面朝上 */
+  transform: rotateY(0deg); /* 打开：右页在右侧 */
   box-shadow: -4px 0 14px rgba(0, 0, 0, 0.2); /* 书脊折痕阴影 */
 }
 
 .page-right.flipping {
-  transform: rotateY(0deg); /* 翻开：展开到右侧 */
+  transform: rotateY(-180deg); /* 翻开：从右往左翻过去，盖在左页上（封面朝上） */
 }
 
 .page-right .page-front {
